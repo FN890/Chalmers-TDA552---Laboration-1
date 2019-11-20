@@ -17,42 +17,22 @@ public class Loadable<T> implements ILoadable<T> {
         objectArrayList = new ArrayList<>();
     }
 
-    /**
-     * @param object Loads the specific object.
-     * @return True if successfully added.
-     */
     @Override
     public boolean load(T object) {
         if (objectArrayList.size() < maximumCapacity) {
-            for (T t : objectArrayList) {
-                if (t.equals(object)) {
-                    return false;
-                }
+            if (!objectArrayList.contains(object)) {
+                return objectArrayList.add(object);
             }
-            objectArrayList.add(object);
-            return true;
         }
         return false;
     }
 
-    /**
-     * @param object Removes the specific object.
-     * @return True if successfully removed.
-     */
     @Override
     public boolean unload(T object) {
-        for (T t : objectArrayList) {
-            if (t.equals(object)) {
-                objectArrayList.remove(object);
-                return true;
-            }
-        }
-        return false;
+        return objectArrayList.remove(object);
     }
 
     public ArrayList<T> getObjectArrayList() {
         return objectArrayList;
     }
 }
-
-

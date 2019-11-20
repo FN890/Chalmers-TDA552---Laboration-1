@@ -6,7 +6,9 @@ class GenericGarageTest {
 
     private final Volvo240 volvo240;
     private final Saab95 saab95;
+    private final Saab95 secondSaab95;
     private final ScaniaCarCarrier scaniaCarCarrier;
+    private final GenericGarage secondGenericGarage;
     private final GenericGarage genericGarage;
 
 
@@ -14,9 +16,11 @@ class GenericGarageTest {
 
         volvo240 = new Volvo240();
         saab95 = new Saab95();
+        secondSaab95 = new Saab95();
         scaniaCarCarrier = new ScaniaCarCarrier();
 
-        genericGarage = new GenericGarage(2);
+        genericGarage = new GenericGarage(3);
+        secondGenericGarage = new GenericGarage(5);
 
     }
 
@@ -25,18 +29,20 @@ class GenericGarageTest {
         assertTrue(genericGarage.load(saab95));
         assertTrue(genericGarage.load(scaniaCarCarrier));
         assertFalse(genericGarage.load(saab95));
+        assertTrue(genericGarage.load(secondSaab95));
         assertFalse(genericGarage.load(volvo240));
     }
 
     @Test
     void unload() {
-        assertTrue(genericGarage.load(saab95));
-        assertTrue(genericGarage.load(scaniaCarCarrier));;
+        assertTrue(secondGenericGarage.load(saab95));
+        assertTrue(secondGenericGarage.load(scaniaCarCarrier));
+        ;
 
-        assertTrue(genericGarage.unload(saab95));
-        assertFalse(genericGarage.unload(saab95));
-        assertTrue(genericGarage.unload(scaniaCarCarrier));
-        assertFalse(genericGarage.unload(volvo240));
-        assertFalse(genericGarage.unload(scaniaCarCarrier));
+        assertTrue(secondGenericGarage.unload(saab95));
+        assertFalse(secondGenericGarage.unload(saab95));
+        assertTrue(secondGenericGarage.unload(scaniaCarCarrier));
+        assertFalse(secondGenericGarage.unload(volvo240));
+        assertFalse(secondGenericGarage.unload(scaniaCarCarrier));
     }
 }

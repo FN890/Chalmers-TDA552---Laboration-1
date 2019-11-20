@@ -20,11 +20,11 @@ class VehicleTest {
 
     @org.junit.jupiter.api.Test
     void testMove() {
-        assertEquals(50, saab95.xPosition);
-        assertEquals(50, saab95.yPosition);
+        assertEquals(100, saab95.xPosition);
+        assertEquals(100, saab95.yPosition);
         saab95.move();
-        assertEquals(51, saab95.xPosition);
-        assertEquals(50, saab95.yPosition);
+        assertEquals(101, saab95.xPosition);
+        assertEquals(100, saab95.yPosition);
 
         assertEquals(100, volvo240.xPosition);
         assertEquals(100, volvo240.yPosition);

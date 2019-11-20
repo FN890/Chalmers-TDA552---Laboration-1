@@ -10,9 +10,10 @@ public class ScaniaCarCarrier extends Scania {
     /**
      * List containing the loaded vehicles.
      */
-    private final ArrayList<AbstractVehicle> carryList = new ArrayList<>();
+    private final ArrayList<AbstractVehicle> carryList;
 
     public ScaniaCarCarrier() {
+        carryList = new ArrayList<>();
         nrDoors = 2;
         color = Color.white;
         enginePower = 600;
@@ -54,7 +55,6 @@ public class ScaniaCarCarrier extends Scania {
             carryList.get(carryList.size() - 1).xPosition = xPosition + carryList.size();
             weight -= carryList.get(carryList.size() - 1).weight;
             carryList.remove(carryList.size() - 1);
-            return true;
         }
         return false;
     }
@@ -80,7 +80,7 @@ public class ScaniaCarCarrier extends Scania {
         }
     }
 
-    ArrayList<AbstractVehicle> getCarryList() {
+    public ArrayList<AbstractVehicle> getCarryList() {
         return carryList;
     }
 }
