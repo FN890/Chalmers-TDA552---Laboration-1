@@ -38,11 +38,14 @@ public class Scania extends AbstractVehicle {
     }
 
     @Override
-    public void gas(double amount) {
+    public boolean gas(double amount) {
         if (isFlatbedAtMinTilt()) {
-            if (amount >= 0 && amount <= 1)
+            if (amount >= 0 && amount <= 1) {
                 incrementSpeed(amount);
+                return true;
+            }
         }
+        return false;
     }
 
     @Override

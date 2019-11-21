@@ -39,7 +39,10 @@ public class ScaniaCarCarrier extends Scania {
                     vehicle.xPosition = xPosition;
                     vehicle.yPosition = yPosition;
                     weight += vehicle.weight;
-                    carryList.add(vehicle);
+                    if (carryList.add(vehicle)) {
+                        vehicle.isLoaded = true;
+                        return true;
+                    }
                     return true;
                 }
             }
@@ -54,7 +57,9 @@ public class ScaniaCarCarrier extends Scania {
         if (carryList.size() > 0 && isFlatbedAtMaxTilt()) {
             carryList.get(carryList.size() - 1).xPosition = xPosition + carryList.size();
             weight -= carryList.get(carryList.size() - 1).weight;
+            carryList.get(carryList.size() - 1).isLoaded = false;
             carryList.remove(carryList.size() - 1);
+            return true;
         }
         return false;
     }

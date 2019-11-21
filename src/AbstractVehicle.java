@@ -45,6 +45,11 @@ abstract public class AbstractVehicle implements IMovable {
      */
     int weight;
 
+    /**
+     * Is the car already loaded.
+     */
+    boolean isLoaded;
+
     public int getNrDoors() {
         return nrDoors;
     }
@@ -103,9 +108,12 @@ abstract public class AbstractVehicle implements IMovable {
     /**
      * @param amount Gas factor, must be [0,1]
      */
-    public void gas(double amount) {
-        if (amount >= 0 && amount <= 1)
+    public boolean gas(double amount) {
+        if (amount >= 0 && amount <= 1 && !isLoaded) {
             incrementSpeed(amount);
+            return true;
+        }
+        return false;
     }
 
     /**

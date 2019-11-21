@@ -21,6 +21,9 @@ public class Loadable<T> implements ILoadable<T> {
     public boolean load(T object) {
         if (objectArrayList.size() < maximumCapacity) {
             if (!objectArrayList.contains(object)) {
+                if (object instanceof AbstractVehicle) {
+                    ((AbstractVehicle) object).isLoaded = true;
+                }
                 return objectArrayList.add(object);
             }
         }
@@ -29,6 +32,9 @@ public class Loadable<T> implements ILoadable<T> {
 
     @Override
     public boolean unload(T object) {
+        if (object instanceof AbstractVehicle) {
+            ((AbstractVehicle) object).isLoaded = false;
+        }
         return objectArrayList.remove(object);
     }
 

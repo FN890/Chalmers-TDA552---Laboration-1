@@ -27,6 +27,9 @@ class GenericGarageTest {
     @Test
     void load() {
         assertTrue(genericGarage.load(saab95));
+
+        assertFalse(saab95.gas(0.5));
+
         assertTrue(genericGarage.load(scaniaCarCarrier));
         assertFalse(genericGarage.load(saab95));
         assertTrue(genericGarage.load(secondSaab95));
@@ -37,12 +40,14 @@ class GenericGarageTest {
     void unload() {
         assertTrue(secondGenericGarage.load(saab95));
         assertTrue(secondGenericGarage.load(scaniaCarCarrier));
-        ;
 
         assertTrue(secondGenericGarage.unload(saab95));
         assertFalse(secondGenericGarage.unload(saab95));
         assertTrue(secondGenericGarage.unload(scaniaCarCarrier));
         assertFalse(secondGenericGarage.unload(volvo240));
         assertFalse(secondGenericGarage.unload(scaniaCarCarrier));
+
+        assertTrue(saab95.gas(0.5));
+
     }
 }
